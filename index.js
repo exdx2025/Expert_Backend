@@ -109,13 +109,3 @@ app.listen(PORT, () => {
 
 
 
-// NODE_ENV=development
-// PORT=4000
-// MONGO_URI=mongodb+srv://ExpertDataBase:expertDB@cluster0.rhl1k4v.mongodb.net/ExpertDB?appName=Cluster0
-// JWT_SECRETKEY=expertdiagnostics 
-// CLOUDINARY_CLOUD_NAME=duw27lpbe # Cloudinary login with rohit personal mail id
-// CLOUDINARY_API_KEY=638294272191621
-// CLOUDINARY_API_SECRET=0TXqcxfFFOLqQfzS1UMSBgE90_c
-// MESSAGECENTRAL_CUSTOMER_ID=C-2827182CB8C74EE
-// MESSAGECENTRAL_BASE64_PASSWORD=RXhwZXJ0QDc2NTQzMjE=
-// MESSAGECENTRAL_EMAIL=exdx20255@gmail.com
