@@ -1,14 +1,18 @@
-const express = require("express");
-const db = require("./config/db");
-const bodyParser = require("body-parser");
 require("dotenv").config();
+const connectDB = require("./config/db");
+const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
 const app = express();
 
-// CORS configuration
+
+connectDB().then(() => {
+  console.log("✅ Database connected, setting up middleware...");
+
+
 const allowedOrigins = [
   "https://expertdiagnostics.in",
   "https://www.expertdiagnostics.in",
@@ -27,8 +31,8 @@ const corsOptions = {
   credentials: true,
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  optionsSuccessStatus: 200,                            
-}; 
+  optionsSuccessStatus: 200,
+};
 
 // Middleware
 app.use(cors(corsOptions));
@@ -68,7 +72,6 @@ const resumeRoutes = require("./routes/resumeRoutes");
 const adminCartRoutes = require("./routes/adminCartRoutes");
 const offerRoutes = require("./routes/offerRoutes");
 
-
 app.use("/person", personRouter);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/form-data", formRoutes);
@@ -106,6 +109,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-
-
-
+}).catch(err => {
+  console.error("❌ Failed to initialize application:", err);
+  process.exit(1);
+});
